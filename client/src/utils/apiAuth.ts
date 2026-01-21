@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiAuth = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://sketchmind-server.vercel.app/",
   withCredentials: true,
 });
 
