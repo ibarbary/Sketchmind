@@ -18,19 +18,21 @@ export type User = {
   credits: number;
 };
 
-export const context = createContext({
-  user: null as User | null,
-  setUser: (user: User | null) => {},
-  pricingPlans: null as PricingPlan[] | null,
-  setPricingPlans: (plans: PricingPlan[] | null) => {},
-  loadingUser: true,
-  setLoadingUser: (loading: boolean) => {},
-  logout: () => {},
-  showLogin: false,
-  setShowLogin: (show: boolean) => {},
-  showSignup: false,
-  setShowSignup: (show: boolean) => {},
-});
+type AppContextType = {
+  user: User | null;
+  setUser: (user: User | null) => void;
+  pricingPlans: PricingPlan[] | null;
+  setPricingPlans: (plans: PricingPlan[] | null) => void;
+  loadingUser: boolean;
+  setLoadingUser: (loading: boolean) => void;
+  logout: () => void;
+  showLogin: boolean;
+  setShowLogin: (show: boolean) => void;
+  showSignup: boolean;
+  setShowSignup: (show: boolean) => void;
+};
+
+export const context = createContext<AppContextType>({} as AppContextType);
 
 function AppContext({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
