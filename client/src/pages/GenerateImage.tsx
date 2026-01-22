@@ -69,9 +69,7 @@ function GenerateImage() {
         {imageUrl && !loading && (
           <button
             onClick={handleDownload}
-            className="cursor-pointer absolute top-2 right-2 p-2 bg-black/60 text-white text-sm rounded-full
-                 opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                 hover:bg-black/80"
+            className="cursor-pointer absolute top-2 right-2 p-2 bg-gray-200 hover:bg-gray-400 transition text-black text-sm rounded-full"
           >
             Download
           </button>
