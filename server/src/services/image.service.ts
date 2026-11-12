@@ -19,7 +19,7 @@ export const generateImageService = async (userId: string, prompt: string) => {
     }
 
     const response = await axios.post(
-      "https://router.huggingface.co/nscale/v1/images/generations",
+      "https://router.huggingface.co/fal-ai/v1/images/generations",
       {
         response_format: "b64_json",
         prompt,
