@@ -25,18 +25,14 @@ export const generateImageService = async (
 
   try {
     const response = await axios.post(
-      "https://router.huggingface.co/fal-ai/black-forest-labs/FLUX.1-schnell",
+      "https://router.huggingface.co/fal-ai/fal-ai/flux/schnell?_subdomain=queue",
       {
-        inputs: prompt,
-        parameters: {
-          num_inference_steps: 4,
-        },
+        prompt: prompt,
       },
       {
         headers: {
           Authorization: `Bearer ${process.env.HF_TOKEN}`,
           "Content-Type": "application/json",
-          Accept: "image/png",
         },
         responseType: "arraybuffer",
       }
@@ -54,11 +50,13 @@ export const generateImageService = async (
     };
 
   } catch (error: any) {
+    const responseData = error.response?.data;
+
     console.error(
-      "Hugging Face error:",
+      "Hugging Face generation error:",
       error.response?.status,
-      error.response?.data
-        ? Buffer.from(error.response.data).toString("utf8")
+      responseData
+        ? Buffer.from(responseData).toString("utf8")
         : error.message
     );
 
